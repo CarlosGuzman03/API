@@ -1,0 +1,51 @@
+# Ejemplo de petición GET a una API pública
+
+# GET es el metodo HTTP usado para solicitar datos desde un servidor, en este codigo en especifico
+# estamos pidiendo informacion sobre los posts de la API
+
+GET https://jsonplaceholder.typicode.com/posts HTTP/1.1
+Host: jsonplaceholder.typicode.com
+User-Agent: HTTPClient/1.0
+Accept: application/json
+
+#############################################################################################################
+
+# Ejemplo de petición POST para enviar datos
+
+# El metodo POST se usa para enviar datos al servidor y crear un nuevo recurso, aqui estamos creando un nuevo post
+
+POST https://jsonplaceholder.typicode.com/posts HTTP/1.1
+Host: jsonplaceholder.typicode.com
+Content-Type: application/json
+User-Agent: HTTPClient/1.0
+Accept: application/json
+
+{
+  "title": "foo",
+  "body": "bar",
+  "userId": 1
+}
+
+#############################################################################################################
+
+# Ejemplo de petición PUT para actualizar un recurso
+PUT https://jsonplaceholder.typicode.com/posts/1 HTTP/1.1
+Host: jsonplaceholder.typicode.com
+Content-Type: application/json
+User-Agent: HTTPClient/1.0
+Accept: application/json
+
+{
+  "id": 1,
+  "title": "updated title",
+  "body": "updated body",
+  "userId": 1
+}
+
+#############################################################################################################
+
+# Ejemplo de petición DELETE para eliminar un recurso
+DELETE https://jsonplaceholder.typicode.com/posts/1 HTTP/1.1
+Host: jsonplaceholder.typicode.com
+User-Agent: HTTPClient/1.0
+Accept: application/json
