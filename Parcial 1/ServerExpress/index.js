@@ -1,18 +1,35 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const express=require('express');
+const app=express();
+const port=3000;
 
-app.get('/', (req, res) => {
-    res.header('access-control-allow-origin', '*');
-    res.sendFile(__dirname + '/public/index.html');
-    }
+//Middlewawre de Aplicacion
+app.use('/',(req,res,next)=>{
+console.log("Peticion al server");
+next();
+}, (req,res,next)=>{
+    console.log("2da funcion middlewawre");
+    next();
+}
 );
 
-app.post('/', (req, res) => {    
-    res.send('Hello World!');
-    }
-);
-app.listen(port, () => {        
-    console.log(`Example app listening at http://localhost:${port}`);
-    }   
-);
+// Middleware incorporado en express
+app.use(express.json());
+app.use(express.text());
+
+app.get('/', (req,res,next)=>{
+    res.sendFile(__dirname+'/index.html');
+})
+
+app.post('/', (req,res)=>{
+    console.log(req.body)
+    res.send("hello");
+})
+
+app.use('/', (req,res,next)=>{
+    res.status(404);
+    res.send("Error 404");
+})
+
+app.listen(port,()=>{
+    console.log('Server running at http://localhost:3000');
+});
